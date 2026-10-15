@@ -1,0 +1,35 @@
+<footer>
+  <div class="bigword" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <app-logo />
+      <p>{{ site.brand.tagline }}</p>
+    </div>
+    <nav aria-label="Footer">
+      <h2>Explore</h2>
+      <ul>
+        @for (link of links; track link.path) {
+          <li>
+            <a [routerLink]="link.path">{{ link.label }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+    <div>
+      <h2>Reach us</h2>
+      <ul>
+        <li>
+          <a [href]="content.emailHref">{{ site.brand.email }}</a>
+        </li>
+        <li>
+          <a [href]="content.phoneHref">{{ site.brand.phone }}</a>
+        </li>
+        <li>{{ site.location.address }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap copy">
+    <span>© {{ year }} Volt Sports Hub. All rights reserved.</span>
+    <span>Power your game.</span>
+  </div>
+</footer>

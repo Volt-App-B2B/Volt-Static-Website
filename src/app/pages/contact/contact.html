@@ -1,0 +1,122 @@
+<app-page-hero eyebrow="Contact us">
+  <h1 class="disp">Let's <span class="lime">talk</span>.</h1>
+  <p class="sub">
+    Questions, partnerships or want your academy on Volt? Send a message and we will answer fast.
+  </p>
+</app-page-hero>
+
+<section class="pad body">
+  <div class="wrap">
+    <div class="cgrid">
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate appReveal aria-label="Contact form">
+        <div class="f2">
+          <div class="fld">
+            <label for="n">Your name</label>
+            <input
+              id="n"
+              formControlName="name"
+              autocomplete="name"
+              aria-required="true"
+              [attr.aria-invalid]="showError('name')"
+              [attr.aria-describedby]="showError('name') ? 'n-err' : null"
+            />
+            @if (showError('name')) {
+              <p class="err" id="n-err">Please enter your name.</p>
+            }
+          </div>
+          <div class="fld">
+            <label for="e">Email</label>
+            <input
+              id="e"
+              type="email"
+              formControlName="email"
+              autocomplete="email"
+              aria-required="true"
+              [attr.aria-invalid]="showError('email')"
+              [attr.aria-describedby]="showError('email') ? 'e-err' : null"
+            />
+            @if (showError('email')) {
+              <p class="err" id="e-err">
+                {{ form.controls.email.hasError('required') ? 'Please enter your email.' : 'Please enter a valid email address.' }}
+              </p>
+            }
+          </div>
+        </div>
+        <div class="f2">
+          <div class="fld">
+            <label for="p">Phone (optional)</label>
+            <input id="p" type="tel" formControlName="phone" autocomplete="tel" />
+          </div>
+          <div class="fld">
+            <label for="t">Topic</label>
+            <select id="t" formControlName="topic">
+              @for (t of site.form.topics; track t) {
+                <option [value]="t">{{ t }}</option>
+              }
+            </select>
+          </div>
+        </div>
+        <div class="fld">
+          <label for="m">Message</label>
+          <textarea
+            id="m"
+            formControlName="message"
+            aria-required="true"
+            [attr.aria-invalid]="showError('message')"
+            [attr.aria-describedby]="showError('message') ? 'm-err' : null"
+          ></textarea>
+          @if (showError('message')) {
+            <p class="err" id="m-err">Please write a message.</p>
+          }
+        </div>
+        <button app-button type="submit" appMagnetic [disabled]="status().kind === 'loading'">
+          {{ status().kind === 'loading' ? 'Sending…' : 'Send message' }}
+          <app-icon [markup]="icons.arrow" [stroke]="2.4" />
+        </button>
+        <div
+          class="form-status"
+          role="status"
+          [class.show]="status().kind !== 'idle'"
+          [class.ok]="status().kind === 'success'"
+          [class.err]="status().kind === 'error'"
+        >
+          {{ status().message }}
+        </div>
+      </form>
+
+      <div class="cinfo" appReveal [revealDelay]="0.15">
+        <a class="ci" [href]="content.emailHref">
+          <div class="ic"><app-icon [markup]="icons.mail" [stroke]="2" /></div>
+          <div>
+            <b>Email</b><span>{{ site.brand.email }}</span>
+          </div>
+        </a>
+        <a class="ci" [href]="content.phoneHref">
+          <div class="ic"><app-icon [markup]="icons.phone" [stroke]="2" /></div>
+          <div>
+            <b>Phone</b><span>{{ site.brand.phone }}</span>
+          </div>
+        </a>
+        <a class="ci" routerLink="/about">
+          <div class="ic"><app-icon [markup]="icons.pin" [stroke]="2" /></div>
+          <div>
+            <b>Visit us</b><span>{{ site.location.address }}</span>
+          </div>
+        </a>
+        <div class="soc">
+          <a [href]="site.brand.social.instagram" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a [href]="site.brand.social.facebook" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+          <a [href]="site.brand.social.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+          <a [href]="site.brand.social.x" target="_blank" rel="noopener" aria-label="X">X</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq">
+      <app-section-heading eyebrow="FAQ">
+        <h2 class="disp">Quick answers</h2>
+      </app-section-heading>
+      <app-faq-accordion [items]="site.faq" />
+    </div>
+  </div>
+</section>

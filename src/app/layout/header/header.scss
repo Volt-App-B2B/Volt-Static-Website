@@ -1,0 +1,131 @@
+:host {
+  display: block;
+}
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 90;
+  transition: padding 0.3s;
+  padding: 18px 0;
+
+  /* Blur bar lives on a pseudo-element: backdrop-filter on the header itself would trap the fixed mobile menu. */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(12, 40, 39, 0.82);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  &.scrolled {
+    padding: 10px 0;
+    &::before {
+      opacity: 1;
+    }
+  }
+  .wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+}
+.menu {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+
+  a {
+    padding: 10px 16px;
+    border-radius: 99px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--mut);
+    position: relative;
+    transition: color 0.2s;
+
+    &:hover,
+    &.active {
+      color: var(--w);
+    }
+    &.active::after {
+      content: '';
+      position: absolute;
+      inset-inline: 16px;
+      bottom: 4px;
+      height: 2px;
+      background: var(--l);
+      border-radius: 2px;
+    }
+  }
+}
+.burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--w);
+  cursor: pointer;
+
+  span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+    margin: 5px auto;
+    transition: 0.3s;
+  }
+}
+.menu-open .burger span {
+  &:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  &:nth-child(2) {
+    opacity: 0;
+  }
+  &:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .burger {
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+  .menu {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: min(320px, 86vw);
+    background: var(--g);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 100px 24px 24px;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition:
+      transform 0.35s,
+      visibility 0.35s;
+    border-inline-start: 1px solid var(--line);
+
+    a {
+      font-size: 20px;
+      padding: 16px;
+    }
+  }
+  .menu-open .menu {
+    transform: none;
+    visibility: visible;
+  }
+  .cta {
+    display: none;
+  }
+}

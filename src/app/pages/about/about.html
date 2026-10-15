@@ -1,0 +1,70 @@
+<app-page-hero eyebrow="About us">
+  <h1 class="disp">We are <span class="lime">Volt</span>.</h1>
+  <p class="sub">{{ site.about.lead }}</p>
+</app-page-hero>
+
+<section class="pad the-place">
+  <div class="wrap">
+    <app-section-heading eyebrow="Our home base">
+      <h2 class="disp">The <span class="lime">place</span></h2>
+    </app-section-heading>
+    <div class="place">
+      <div class="info" appReveal>
+        <p>{{ site.location.brief }}</p>
+        <div class="facts">
+          <div class="fact">
+            <app-icon [markup]="icons.pin" [stroke]="2" />
+            <div>
+              <h3>Main location</h3>
+              <span>{{ site.location.name }}</span>
+              <span>{{ site.location.address }}</span>
+            </div>
+          </div>
+          <div class="fact">
+            <app-icon [markup]="icons.clock" [stroke]="2" />
+            <div>
+              <h3>Opening hours</h3>
+              @for (h of site.location.hours; track h.day) {
+                <span
+                  >{{ h.day }}: <b>{{ h.time }}</b></span
+                >
+              }
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <a app-button appMagnetic [href]="content.directionsUrl" target="_blank" rel="noopener"
+            >Get directions</a
+          >
+          <a app-button variant="ghost" routerLink="/gallery">See the gallery</a>
+        </div>
+      </div>
+      <app-map-embed appReveal [revealDelay]="0.15" />
+    </div>
+  </div>
+</section>
+
+<section class="pad bolts alt">
+  <div class="wrap">
+    <app-section-heading eyebrow="Mission">
+      <h2 class="sr-only">Our mission and values</h2>
+    </app-section-heading>
+    <p class="mission" appReveal>@for (part of mission; track $index) {@if (part.highlight) {<em>{{ part.text }}</em>} @else {<span>{{ part.text }}</span>}}</p>
+    <div class="vals">
+      @for (v of site.about.values; track v.t; let i = $index) {
+        <div class="val" appReveal [revealDelay]="i * 0.08">
+          <h3>{{ v.t }}</h3>
+          <p>{{ v.d }}</p>
+        </div>
+      }
+    </div>
+    <div class="tl">
+      @for (m of site.about.milestones; track m.y; let i = $index) {
+        <div appReveal [revealDelay]="i * 0.1">
+          <b>{{ m.y }}</b>
+          <span>{{ m.d }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>

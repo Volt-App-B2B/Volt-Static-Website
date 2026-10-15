@@ -1,0 +1,50 @@
+<app-page-hero eyebrow="Gallery">
+  <h1 class="disp">Inside <span class="lime">Volt</span>.</h1>
+  <p class="sub">
+    Take a look around our main location: the courts, the training halls, the recovery rooms and the people who fill
+    them.
+  </p>
+</app-page-hero>
+
+<section class="pad body">
+  <div class="wrap">
+    <div class="gtools">
+      <div class="chips" role="group" aria-label="Filter photos">
+        @for (c of categories; track c.k) {
+          <button type="button" [class.on]="c.k === active()" [attr.aria-pressed]="c.k === active()" (click)="active.set(c.k)">
+            {{ c.t }}
+          </button>
+        }
+      </div>
+      <span class="gcount" aria-live="polite"
+        >{{ items().length }} {{ items().length === 1 ? 'photo' : 'photos' }}</span
+      >
+    </div>
+
+    <div class="gal" [class.flat]="flat()">
+      @for (g of items(); track active() + '-' + $index; let i = $index) {
+        <button
+          type="button"
+          class="g-item"
+          [class.w2]="g.span === 'w2'"
+          [class.h2]="g.span === 'h2'"
+          [style.--d]="i * 0.05 + 's'"
+          [attr.aria-label]="'Open photo: ' + g.title"
+          (click)="lightboxIndex.set(i)"
+        >
+          <app-gallery-media [item]="g" />
+          <span class="g-zoom"><app-icon [markup]="icons.zoom" [stroke]="2.2" /></span>
+          <span class="g-cap"
+            ><b>{{ g.title }}</b
+            ><i>{{ categoryName(g.cat) }}</i></span
+          >
+        </button>
+      }
+    </div>
+  </div>
+</section>
+
+@let open = lightboxIndex();
+@if (open !== null) {
+  <app-lightbox [items]="items()" [index]="open" (indexChange)="lightboxIndex.set($event)" (closed)="lightboxIndex.set(null)" />
+}

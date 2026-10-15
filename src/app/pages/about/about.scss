@@ -1,0 +1,152 @@
+:host {
+  display: block;
+}
+.the-place {
+  padding-top: 20px;
+}
+.alt {
+  background-color: var(--g2);
+}
+.place {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 56px;
+  align-items: start;
+}
+.info > p {
+  color: var(--mut);
+  margin-bottom: 26px;
+}
+.facts {
+  display: grid;
+  gap: 14px;
+}
+.fact {
+  display: flex;
+  gap: 16px;
+  background: var(--g2);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px 20px;
+
+  app-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--l);
+    margin-top: 2px;
+  }
+  h3 {
+    font: 700 12px/1.65 var(--body);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--l);
+    margin-bottom: 4px;
+  }
+  span {
+    color: var(--mut);
+    font-size: 15px;
+    display: block;
+  }
+  /* The design renders the <b> times with the same small-caps block style as the labels (white). */
+  b {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    color: #fff;
+  }
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px 12px;
+  margin-top: 26px;
+}
+.vals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 46px;
+}
+.val {
+  border-top: 3px solid var(--l);
+  padding: 22px 4px 0;
+
+  h3 {
+    font: 800 italic 20px var(--display);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  p {
+    color: var(--mut);
+    font-size: 15px;
+  }
+}
+.mission {
+  font: 800 italic clamp(26px, 3.6vw, 44px) / 1.2 var(--display);
+  max-width: 900px;
+  margin-top: 20px;
+
+  em {
+    color: var(--l);
+    font-style: inherit;
+  }
+}
+.tl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 50px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 9px;
+    inset-inline: 0;
+    height: 2px;
+    background: var(--line);
+  }
+  > div {
+    position: relative;
+    padding: 34px 22px 0 0;
+    padding-inline: 0 22px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      inset-inline-start: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--g);
+      border: 3px solid var(--l);
+    }
+  }
+  b {
+    font: 900 italic 20px var(--display);
+    text-transform: uppercase;
+    color: var(--l);
+    display: block;
+    margin-bottom: 6px;
+  }
+  span {
+    color: var(--mut);
+    font-size: 14px;
+  }
+}
+@media (max-width: 900px) {
+  .place {
+    grid-template-columns: 1fr;
+  }
+  .tl {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 30px;
+
+    &::before {
+      display: none;
+    }
+  }
+}

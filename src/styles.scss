@@ -1,0 +1,175 @@
+/* Self-hosted Montserrat italics (stand-in for the guideline's heavy italic face "FSP DEMO"). Swap --display to change. */
+@import '@fontsource/montserrat/latin-700-italic.css';
+@import '@fontsource/montserrat/latin-800-italic.css';
+@import '@fontsource/montserrat/latin-900-italic.css';
+
+/* =====================  VOLT DESIGN TOKENS  =====================
+   Brand: #0C2827 (dark green), #95CE09 (lime), black, white. Body font Arial. */
+:root {
+  --g: #0c2827;
+  --g2: #11332f;
+  --g3: #16403b;
+  --l: #95ce09;
+  --l2: #b3ee1f;
+  --k: #000;
+  --w: #fff;
+  --line: rgba(255, 255, 255, 0.12);
+  --mut: rgba(255, 255, 255, 0.68);
+  --display: 'Montserrat', 'Arial Black', Arial, sans-serif;
+  --body: Arial, Helvetica, sans-serif;
+  --bolt: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='520' viewBox='0 0 520 520'%3E%3Cg fill='%23ffffff' fill-opacity='.045'%3E%3Cpath d='M20 80 L330 20 L150 120 L420 90 L60 210 L200 130Z'/%3E%3Cpath d='M260 330 L500 250 L380 350 L520 340 L240 470 L340 380Z'/%3E%3Cpath d='M0 400 L180 350 L90 420 L190 410 L20 500 L90 440Z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: var(--g);
+  color: var(--w);
+  font:
+    16px/1.65 var(--body);
+  overflow-x: hidden;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+ul {
+  list-style: none;
+}
+button {
+  font-family: inherit;
+  color: inherit;
+}
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+::selection {
+  background: var(--l);
+  color: var(--g);
+}
+:focus-visible {
+  outline: 3px solid var(--l);
+  outline-offset: 3px;
+}
+
+/* ---------- shared layout + type primitives ---------- */
+.wrap {
+  width: min(1180px, 100% - 40px);
+  margin-inline: auto;
+}
+.disp {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+.lime {
+  color: var(--l);
+}
+.eyebrow {
+  font: 700 12px/1 var(--body);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--l);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  &::before {
+    content: '';
+    width: 34px;
+    height: 2px;
+    background: var(--l);
+  }
+}
+h2.disp {
+  font-size: clamp(34px, 5vw, 64px);
+  margin: 16px 0 18px;
+}
+.sub {
+  color: var(--mut);
+  max-width: 620px;
+  font-size: 18px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.pad {
+  padding: 110px 0;
+  position: relative;
+}
+.bolts {
+  background-image: var(--bolt);
+  background-size: 520px;
+}
+@media (max-width: 900px) {
+  .pad {
+    padding: 80px 0;
+  }
+}
+
+/* ---------- page enter + reveal-on-scroll ---------- */
+.page {
+  display: block;
+  animation: pageIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* .reveal is added by the appReveal directive in the browser only, so prerendered HTML stays visible. */
+.reveal {
+  opacity: 0;
+  translate: 0 34px;
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    translate 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--d, 0s);
+
+  &.in {
+    opacity: 1;
+    translate: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    translate: none;
+  }
+}

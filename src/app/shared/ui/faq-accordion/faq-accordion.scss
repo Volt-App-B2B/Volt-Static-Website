@@ -1,0 +1,55 @@
+:host {
+  display: block;
+}
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+h3 {
+  font: inherit;
+}
+.faq-q {
+  width: 100%;
+  background: none;
+  border: 0;
+  color: var(--w);
+  text-align: start;
+  padding: 24px 0;
+  font: 800 italic 20px var(--display);
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  cursor: pointer;
+  align-items: center;
+
+  &::after {
+    content: '+';
+    font: 400 normal 32px/1 var(--body);
+    color: var(--l);
+    transition: 0.3s;
+    flex: none;
+  }
+}
+.open .faq-q::after {
+  transform: rotate(45deg);
+}
+.faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition:
+    grid-template-rows 0.4s ease,
+    visibility 0.4s;
+  visibility: hidden;
+  color: var(--mut);
+}
+.open .faq-a {
+  grid-template-rows: 1fr;
+  visibility: visible;
+}
+.faq-a-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+p {
+  padding-bottom: 24px;
+}

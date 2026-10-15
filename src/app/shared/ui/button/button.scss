@@ -1,0 +1,48 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--l);
+  color: var(--g);
+  font-weight: 800;
+  font-size: 15px;
+  padding: 15px 28px;
+  border-radius: 99px;
+  border: 2px solid var(--l);
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+  font-family: var(--body);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px -8px var(--l);
+    background: var(--l2);
+  }
+  &:disabled {
+    opacity: 0.6;
+    cursor: progress;
+    transform: none;
+    box-shadow: none;
+  }
+  &.ghost {
+    background: transparent;
+    color: var(--w);
+    border-color: var(--line);
+    &:hover {
+      border-color: var(--l);
+      color: var(--l);
+      box-shadow: none;
+    }
+  }
+  &.sm {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+  app-icon {
+    width: 18px;
+    height: 18px;
+  }
+}

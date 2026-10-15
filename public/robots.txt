@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: set the real production domain (see "Before launch" in README.md)
+Sitemap: https://www.volt-sportshub.com/sitemap.xml

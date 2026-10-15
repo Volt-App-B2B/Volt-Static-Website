@@ -1,0 +1,51 @@
+:host {
+  display: block;
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 2px solid var(--l);
+  aspect-ratio: 4 / 3.3;
+  background: var(--g2);
+  box-shadow: 16px 16px 0 -2px rgba(149, 206, 9, 0.18);
+}
+iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(0.6) invert(0.92) hue-rotate(150deg) contrast(0.9);
+}
+.pin {
+  position: absolute;
+  inset-inline-start: 16px;
+  top: 16px;
+  background: var(--l);
+  color: var(--g);
+  font-weight: 800;
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 99px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  box-shadow: 0 10px 24px -8px #000;
+
+  &::before {
+    content: '';
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--g);
+    animation: pulse 1.6s infinite;
+  }
+}
+@keyframes pulse {
+  50% {
+    box-shadow:
+      0 0 0 8px rgba(12, 40, 39, 0),
+      0 0 0 0 rgba(12, 40, 39, 0.5);
+    transform: scale(1.25);
+  }
+}

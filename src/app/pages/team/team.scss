@@ -1,0 +1,117 @@
+$ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+:host {
+  display: block;
+}
+.body {
+  padding-top: 20px;
+}
+.team {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 22px;
+  margin-top: 20px;
+}
+.member {
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  background: var(--g2);
+  border: 1px solid var(--line);
+  aspect-ratio: 3 / 4;
+  transition:
+    transform 0.35s,
+    border-color 0.3s,
+    opacity 0.8s $ease var(--d, 0s),
+    translate 0.8s $ease var(--d, 0s);
+
+  &:hover {
+    transform: translateY(-8px);
+    border-color: var(--l);
+  }
+  .ph {
+    position: absolute;
+    inset: 0;
+    background-image: var(--bolt), linear-gradient(160deg, var(--g3), var(--g));
+    background-size:
+      420px,
+      cover;
+    display: grid;
+    place-items: center;
+
+    span {
+      font: 900 italic 110px/1 var(--display);
+      color: rgba(149, 206, 9, 0.9);
+      text-shadow: 0 0 50px rgba(149, 206, 9, 0.4);
+      transition: 0.4s;
+    }
+    img {
+      object-fit: cover;
+    }
+  }
+  &:hover .ph span {
+    transform: scale(0.7) translateY(-60px);
+  }
+  .meta {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 70px 24px 24px;
+    background: linear-gradient(transparent, rgba(5, 20, 19, 0.95) 60%);
+  }
+  h2 {
+    font: 800 italic 22px var(--display);
+    text-transform: uppercase;
+  }
+  .role {
+    color: var(--l);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  p {
+    color: var(--mut);
+    font-size: 14px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.4s;
+    margin-top: 0;
+  }
+  &:hover p {
+    max-height: 100px;
+    opacity: 1;
+    margin-top: 10px;
+  }
+}
+.join {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 34px;
+  background: var(--l);
+  color: var(--g);
+  border-color: var(--l);
+
+  :focus-visible {
+    outline-color: var(--g);
+  }
+  h2 {
+    font: 900 italic 30px/1.05 var(--display);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  p {
+    max-height: none;
+    opacity: 1;
+    color: var(--g);
+    font-size: 16px;
+  }
+  .btn {
+    background: var(--g);
+    color: var(--l);
+    border-color: var(--g);
+    margin-top: 20px;
+  }
+}

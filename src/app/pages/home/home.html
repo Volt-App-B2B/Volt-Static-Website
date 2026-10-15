@@ -1,0 +1,95 @@
+<section class="hero" appHeroGlow>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Sports Hub · One app</span>
+      <h1 class="disp">Power<br />your <span class="lime">game</span>.</h1>
+      <p>{{ site.brand.tagline }}</p>
+      <div class="cta">
+        <a app-button appMagnetic routerLink="/contact"
+          >Join Volt <app-icon [markup]="icons.arrow" [stroke]="2.4" />
+        </a>
+        <a app-button variant="ghost" routerLink="/about">Visit our place</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="ring"></div>
+      <div class="ring r2"></div>
+      <app-bolt-mark class="big" [animated]="true" />
+      <div class="chip c1">
+        <app-icon [markup]="icons.calendar" [stroke]="2" />
+        <div>Court booked<small>Today · 7:00 PM</small></div>
+      </div>
+      <div class="chip c2">
+        <app-icon [markup]="icons.qr" [stroke]="2" />
+        <div>QR ready<small>Scan at the door</small></div>
+      </div>
+      <div class="chip c3">
+        <app-icon [markup]="icons.wallet" [stroke]="2" />
+        <div>Wallet<small>Paid in 1 tap</small></div>
+      </div>
+    </div>
+  </div>
+  <div class="scrollcue" aria-hidden="true"></div>
+</section>
+
+<app-marquee [items]="site.sports" />
+
+<section class="pad">
+  <div class="wrap">
+    <div class="stats" appReveal>
+      @for (s of site.stats; track s.l) {
+        <div class="stat">
+          <div class="n" [appCountUp]="s.n" [countSuffix]="s.s"></div>
+          <div class="l">{{ s.l }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="pad services">
+  <div class="wrap">
+    <app-section-heading eyebrow="What you can do">
+      <h2 class="disp">Everything sport.<br /><span class="lime">One place.</span></h2>
+      <p class="sub">
+        From academies and classes to courts, coaches and recovery, Volt puts the whole sporting day in your pocket.
+      </p>
+    </app-section-heading>
+    <div class="grid">
+      @for (s of site.services; track s.k; let i = $index) {
+        <article class="card" appReveal [revealDelay]="(i % 4) * 0.07" appTilt [attr.data-no]="number(i)">
+          <div class="ic"><app-icon [markup]="s.i" /></div>
+          <h3>{{ s.t }}</h3>
+          <p>{{ s.d }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="pad bolts alt">
+  <div class="wrap center">
+    <app-section-heading eyebrow="How it works">
+      <h2 class="disp">Three taps to <span class="lime">game time</span></h2>
+    </app-section-heading>
+    <div class="steps">
+      @for (s of site.steps; track s.t; let i = $index) {
+        <div class="step" appReveal [revealDelay]="i * 0.12">
+          <div class="num" aria-hidden="true">{{ i + 1 }}</div>
+          <h3>{{ s.t }}</h3>
+          <p>{{ s.d }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<app-white-label-demo />
+
+<section class="pad cta-band bolts">
+  <div class="wrap" appReveal>
+    <h2 class="disp">Ready to <span class="lime">charge up?</span></h2>
+    <p class="sub">Players, parents, coaches and academies: say hello and we will get you started.</p>
+    <a app-button appMagnetic routerLink="/contact">Talk to the team</a>
+  </div>
+</section>
