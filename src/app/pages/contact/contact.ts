@@ -8,6 +8,7 @@ import { Reveal } from '../../shared/directives/reveal.directive';
 import { Button } from '../../shared/ui/button/button';
 import { FaqAccordion } from '../../shared/ui/faq-accordion/faq-accordion';
 import { ICONS, Icon } from '../../shared/ui/icon/icon';
+import { Select } from '../../shared/ui/select/select';
 import { PageHero } from '../../shared/ui/page-hero/page-hero';
 import { SectionHeading } from '../../shared/ui/section-heading/section-heading';
 
@@ -24,7 +25,7 @@ export const FORM_MESSAGES = {
 
 @Component({
   selector: 'app-contact',
-  imports: [ReactiveFormsModule, RouterLink, PageHero, SectionHeading, FaqAccordion, Icon, Button, Reveal, Magnetic],
+  imports: [ReactiveFormsModule, RouterLink, PageHero, SectionHeading, FaqAccordion, Icon, Button, Reveal, Magnetic, Select],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'page' },
   templateUrl: './contact.html',

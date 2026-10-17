@@ -8,8 +8,6 @@
 export interface SocialLinks {
   instagram: string;
   facebook: string;
-  linkedin: string;
-  x: string;
 }
 
 export interface Brand {
@@ -135,10 +133,8 @@ export const SITE: SiteContent = {
     phone: '01000332861', // [PLACEHOLDER]
     social: {
       // [PLACEHOLDER] links
-      instagram: 'https://instagram.com/',
-      facebook: 'https://facebook.com/',
-      linkedin: 'https://linkedin.com/',
-      x: 'https://x.com/',
+      instagram: 'https://www.instagram.com/voltsportshub/',
+      facebook: 'https://www.facebook.com/profile.php?id=61583010271806',
     },
     siteUrl: 'https://www.volt-sportshub.com', // [PLACEHOLDER] real production domain
   },
