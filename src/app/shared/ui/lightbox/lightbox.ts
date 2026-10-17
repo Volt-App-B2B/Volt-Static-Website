@@ -12,7 +12,6 @@ import {
   output,
 } from '@angular/core';
 import { GalleryItem } from '../../../content/site-content';
-import { SiteContentService } from '../../../core/site-content.service';
 import { GalleryMedia } from '../gallery-media/gallery-media';
 
 /**
@@ -50,7 +49,6 @@ import { GalleryMedia } from '../gallery-media/gallery-media';
 export class Lightbox implements OnDestroy {
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef).nativeElement;
   private readonly doc = inject(DOCUMENT);
-  private readonly content = inject(SiteContentService);
 
   readonly items = input.required<GalleryItem[]>();
   readonly index = model.required<number>();
@@ -58,7 +56,7 @@ export class Lightbox implements OnDestroy {
 
   protected readonly current = computed(() => this.items()[this.index()]);
   protected readonly meta = computed(
-    () => `${this.content.categoryName(this.current().cat)}  ·  ${this.index() + 1} / ${this.items().length}`,
+    () => `${this.current().subtitle}  ·  ${this.index() + 1} / ${this.items().length}`,
   );
 
   private opener: HTMLElement | null = null;

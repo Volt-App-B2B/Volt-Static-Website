@@ -14,7 +14,7 @@ import { Icon } from '../icon/icon';
     @if (item().photo) {
       <img [ngSrc]="item().photo" [alt]="item().title" [style.object-fit]="fit()" fill />
     } @else {
-      <div class="ph" [class]="'ph c-' + item().cat">
+      <div class="ph">
         <small>Photo placeholder</small>
         <app-icon [markup]="icon()" [stroke]="1.1" />
       </div>
@@ -29,6 +29,6 @@ export class GalleryMedia {
   readonly fit = input<'cover' | 'contain'>('cover');
 
   protected icon(): string {
-    return this.content.galleryIcon(this.item().cat);
+    return this.content.galleryIcon();
   }
 }

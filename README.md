@@ -57,11 +57,9 @@ example "Power your **game**") live in the page templates under `src/app/pages/`
 
 ## Add gallery photos
 
-1. Copy the images into `public/images/gallery/` (landscape, about 1600×1000, under 400 KB each).
-2. In `site-content.ts`, set each item's `photo: "images/gallery/court-1.jpg"` and edit `title` / `cat`.
-   An empty `photo` renders a branded placeholder tile.
-3. `span` is `""`, `"w2"` (wide) or `"h2"` (tall). Keep the total of all tiles a multiple of 4 (wide and tall count as 2)
-   so the mosaic has no gaps. Filtered views automatically switch to a uniform grid.
+1. Copy the images into `public/images/gallery/` (portrait 3:4, about 1080x1440 or larger, under 400 KB each).
+2. In `site-content.ts`, add an item: `{ title, subtitle, photo: "images/gallery/court-1.jpg" }`.
+   An empty `photo` renders a branded placeholder tile. The gallery is a single page with no filters.
 
 ## Project structure
 

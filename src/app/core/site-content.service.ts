@@ -29,14 +29,8 @@ export class SiteContentService {
     return base + (path.startsWith('/') ? path : '/' + path);
   }
 
-  /** Icon markup for a gallery category placeholder tile (reuses service icons, as in the design). */
-  galleryIcon(cat: string): string {
-    const s = this.site.services;
-    const byCat: Record<string, number> = { courts: 4, training: 6, recovery: 3, events: 5, community: 8 };
-    return s[byCat[cat] ?? 0].i;
-  }
-
-  categoryName(key: string): string {
-    return this.site.gallery.categories.find((c) => c.k === key)?.t ?? key;
+  /** Icon markup for a gallery placeholder tile (reuses a service icon, as in the design). */
+  galleryIcon(): string {
+    return this.site.services[4].i;
   }
 }

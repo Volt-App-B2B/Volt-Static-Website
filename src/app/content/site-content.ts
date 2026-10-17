@@ -89,34 +89,20 @@ export interface TeamMember {
   photo: string;
 }
 
-export interface GalleryCategory {
-  k: string;
-  t: string;
-}
-
-export type GallerySpan = '' | 'w2' | 'h2';
-
 export interface GalleryItem {
-  cat: string;
   title: string;
+  subtitle: string;
   /** e.g. "images/gallery/court-1.jpg" (file in public/images/gallery/). Empty = placeholder tile. */
   photo: string;
-  span: GallerySpan;
 }
 
 export interface Gallery {
-  categories: GalleryCategory[];
   items: GalleryItem[];
 }
 
 export interface Faq {
   q: string;
   a: string;
-}
-
-export interface WhiteLabelColor {
-  color: string;
-  name: string;
 }
 
 export interface PageMeta {
@@ -134,7 +120,6 @@ export interface SiteContent {
   sports: string[];
   services: Service[];
   steps: Step[];
-  whiteLabelColors: WhiteLabelColor[];
   team: TeamMember[];
   gallery: Gallery;
   faq: Faq[];
@@ -146,8 +131,8 @@ export const SITE: SiteContent = {
     tag: 'Sports Hub',
     slogan: 'Power your game.',
     tagline: 'One app for every academy, court, coach and class.',
-    email: 'hello@volt-sportshub.com', // [PLACEHOLDER]
-    phone: '+20 100 000 0000', // [PLACEHOLDER]
+    email: 'S.nafie@volt-sports.com', // [PLACEHOLDER]
+    phone: '01000332861', // [PLACEHOLDER]
     social: {
       // [PLACEHOLDER] links
       instagram: 'https://instagram.com/',
@@ -158,10 +143,11 @@ export const SITE: SiteContent = {
     siteUrl: 'https://www.volt-sportshub.com', // [PLACEHOLDER] real production domain
   },
 
-  /* Contact form: leave action empty to open the visitor's email app (mailto).
-     Or paste a Formspree / Getform endpoint to send without a backend. */
+  /* Contact form: messages are POSTed to FormSubmit, which emails them to the address in the URL.
+     First-time setup: submit the form once, then click the activation link FormSubmit emails to that address.
+     Leave action empty to fall back to opening the visitor's email app (mailto). */
   form: {
-    action: '',
+    action: 'https://formsubmit.co/ajax/S.nafie@volt-sports.com',
     topics: ['General question', 'Academy / club partnership', 'Become a coach', 'Support'],
   },
 
@@ -199,8 +185,8 @@ export const SITE: SiteContent = {
 
   location: {
     name: 'Volt Sports Hub — Main Location',
-    address: '[PLACEHOLDER] Street name, District, Cairo, Egypt',
-    mapQuery: 'Cairo, Egypt', // [PLACEHOLDER] exact address or "lat,lng"
+    address: 'Volt Sports Hub, Madinat Al-Amal, Nasr City, Cairo, Egypt',
+    mapQuery: 'Volt sports hub, Madinat Al-Amal, Nasr City, Cairo Governorate 4456120', // exact address or "lat,lng"
     hours: [
       { day: 'Sunday – Thursday', time: '9:00 AM – 10:00 PM' },
       { day: 'Friday – Saturday', time: '10:00 AM – 11:00 PM' },
@@ -325,15 +311,6 @@ export const SITE: SiteContent = {
     { t: 'Play', d: 'Show your QR at the door and focus on the game.' },
   ],
 
-  /* White-label demo swatches on the home page (first one is the default). */
-  whiteLabelColors: [
-    { color: '#0C2827', name: 'Your Academy' },
-    { color: '#E4572E', name: 'Falcons FC' },
-    { color: '#2E6BE4', name: 'Blue Wave' },
-    { color: '#C026D3', name: 'Nova Gym' },
-    { color: '#111111', name: 'Titan Club' },
-  ],
-
   /* Team: replace name/role/bio. Optional: photo: "images/team/name.jpg" (file in public/) */
   team: [
     { name: 'Full Name', role: 'Founder & CEO', bio: 'Leads vision and partnerships. [PLACEHOLDER]', photo: '' },
@@ -344,31 +321,16 @@ export const SITE: SiteContent = {
     { name: 'Full Name', role: 'Customer Success Lead', bio: 'Makes sure players and clubs are happy. [PLACEHOLDER]', photo: '' },
   ],
 
-  /* Gallery: set photo to a path like "images/gallery/court-1.jpg" (file in public/images/gallery/).
-     Empty photo = placeholder tile. cat must match a key in categories. span: "", "w2" (wide), "h2" (tall).
-     Keep the total of all tiles a multiple of 4 (w2 and h2 count as 2) so the grid has no gaps. */
+  /* Gallery: one page, no filters. Put photos in public/images/gallery/ and set photo to "images/gallery/name.jpg".
+     Empty photo = placeholder tile. Photos are portrait (3:4), so any number of tiles fills the grid. */
   gallery: {
-    categories: [
-      { k: 'all', t: 'All' },
-      { k: 'courts', t: 'Courts & pitches' },
-      { k: 'training', t: 'Training halls' },
-      { k: 'recovery', t: 'Recovery' },
-      { k: 'events', t: 'Events' },
-      { k: 'community', t: 'Community' },
-    ],
     items: [
-      { cat: 'courts', title: 'Main pitch', photo: '', span: 'w2' },
-      { cat: 'training', title: 'Training hall', photo: '', span: '' },
-      { cat: 'courts', title: 'Padel courts', photo: '', span: 'h2' },
-      { cat: 'recovery', title: 'Physiotherapy room', photo: '', span: '' },
-      { cat: 'events', title: 'Tournament day', photo: '', span: '' },
-      { cat: 'community', title: 'Family weekend', photo: '', span: 'w2' },
-      { cat: 'training', title: 'Strength zone', photo: '', span: '' },
-      { cat: 'courts', title: 'Swimming pool', photo: '', span: '' },
-      { cat: 'events', title: 'Award night', photo: '', span: 'h2' },
-      { cat: 'recovery', title: 'Recovery lounge', photo: '', span: '' },
-      { cat: 'community', title: 'Kids academy', photo: '', span: '' },
-      { cat: 'courts', title: 'Entrance & reception', photo: '', span: '' },
+      { title: 'Court 5', subtitle: 'Blue padel court, net and floodlights by day', photo: 'images/gallery/court-01.jpg' },
+      { title: 'Court 1', subtitle: 'Glass walls and green turf along the courtside', photo: 'images/gallery/court-02.jpg' },
+      { title: 'Between the courts', subtitle: 'Benches lined up down the walkway to Court 2', photo: 'images/gallery/court-03.jpg' },
+      { title: 'Game night', subtitle: 'Players on the courts under the floodlights', photo: 'images/gallery/court-04.jpg' },
+      { title: 'Courtside seating', subtitle: 'Wooden benches in the open-air plaza', photo: 'images/gallery/court-06.jpg' },
+      { title: 'Court 4 view', subtitle: 'Padel courts seen from the plaza at golden hour', photo: 'images/gallery/court-07.jpg' },
     ],
   },
 

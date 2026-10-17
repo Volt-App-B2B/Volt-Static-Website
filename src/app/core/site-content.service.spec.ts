@@ -12,7 +12,6 @@ describe('SiteContentService', () => {
   it('exposes the typed SITE constant', () => {
     expect(service.site).toBe(SITE);
     expect(service.site.services.length).toBe(10);
-    expect(service.site.gallery.items.length % 4).toBe(0 as number);
   });
 
   it('builds the map embed and directions URLs from location.mapQuery', () => {
@@ -22,7 +21,7 @@ describe('SiteContentService', () => {
   });
 
   it('strips whitespace from tel: and mailto: links', () => {
-    expect(service.phoneHref).toBe('tel:+201000000000');
+    expect(service.phoneHref).toBe('tel:01000332861');
     expect(service.emailHref).toBe('mailto:' + SITE.brand.email);
   });
 
@@ -31,14 +30,14 @@ describe('SiteContentService', () => {
     expect(service.absoluteUrl('about')).toBe(SITE.brand.siteUrl + '/about');
   });
 
-  it('keeps every gallery item in a known category', () => {
-    const keys = SITE.gallery.categories.map((c) => c.k);
-    for (const item of SITE.gallery.items) expect(keys).toContain(item.cat);
-    expect(service.categoryName('courts')).toBe('Courts & pitches');
+  it('gives every gallery item a title and subtitle', () => {
+    for (const item of SITE.gallery.items) {
+      expect(item.title).toBeTruthy();
+      expect(item.subtitle).toBeTruthy();
+    }
   });
 
   it('keeps unfinished facts clearly marked', () => {
-    expect(SITE.location.address).toContain('[PLACEHOLDER]');
     expect(SITE.team.every((m) => m.bio.includes('[PLACEHOLDER]'))).toBeTrue();
   });
 });

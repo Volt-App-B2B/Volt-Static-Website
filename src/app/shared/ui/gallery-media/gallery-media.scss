@@ -20,18 +20,6 @@ img {
     cover;
   transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.ph.c-courts {
-  background-image: var(--bolt), linear-gradient(150deg, #1d4a2c, var(--g));
-}
-.ph.c-recovery {
-  background-image: var(--bolt), linear-gradient(150deg, #1a4650, var(--g));
-}
-.ph.c-events {
-  background-image: var(--bolt), linear-gradient(150deg, #3a4a14, var(--g));
-}
-.ph.c-community {
-  background-image: var(--bolt), linear-gradient(150deg, #27413f, #0f2f2d);
-}
 app-icon {
   width: 34%;
   max-width: 120px;

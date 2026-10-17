@@ -33,6 +33,9 @@ export class ContactService {
     if (action) {
       const data = new FormData();
       for (const [k, val] of Object.entries(v)) data.append(k, val);
+      data.append('_subject', `[Website] ${v.topic || 'Message'} from ${v.name}`);
+      data.append('_template', 'table');
+      data.append('_captcha', 'false');
       const res = await fetch(action, { method: 'POST', headers: { Accept: 'application/json' }, body: data });
       if (!res.ok) throw new Error(`Form endpoint responded ${res.status}`);
       return 'sent';

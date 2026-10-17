@@ -23,12 +23,14 @@ export const routes: Routes = [
     data: { description: pages.gallery.description },
     loadComponent: () => import('./pages/gallery/gallery').then((m) => m.Gallery),
   },
-  {
-    path: 'team',
-    title: pages.team.title,
-    data: { description: pages.team.description },
-    loadComponent: () => import('./pages/team/team').then((m) => m.Team),
-  },
+  // TEAM PAGE DISABLED (/team shows Not Found) until team photos are ready. Uncomment this route,
+  // the "Our Team" link in layout/nav-links.ts and the /team entry in public/sitemap.xml to bring it back.
+  // {
+  //   path: 'team',
+  //   title: pages.team.title,
+  //   data: { description: pages.team.description },
+  //   loadComponent: () => import('./pages/team/team').then((m) => m.Team),
+  // },
   {
     path: 'contact',
     title: pages.contact.title,

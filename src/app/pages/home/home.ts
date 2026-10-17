@@ -11,7 +11,7 @@ import { Button } from '../../shared/ui/button/button';
 import { ICONS, Icon } from '../../shared/ui/icon/icon';
 import { Marquee } from '../../shared/ui/marquee/marquee';
 import { SectionHeading } from '../../shared/ui/section-heading/section-heading';
-import { WhiteLabelDemo } from './white-label-demo';
+import { BookingDemo } from './booking-demo';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +22,7 @@ import { WhiteLabelDemo } from './white-label-demo';
     Icon,
     Marquee,
     SectionHeading,
-    WhiteLabelDemo,
+    BookingDemo,
     Reveal,
     CountUp,
     Tilt,

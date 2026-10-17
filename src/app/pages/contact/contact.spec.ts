@@ -68,7 +68,7 @@ describe('ContactService.buildMailto', () => {
       topic: 'Support',
       message: 'Hi there',
     });
-    expect(url.startsWith('mailto:hello@volt-sportshub.com?subject=')).toBeTrue();
+    expect(url.startsWith('mailto:S.nafie@volt-sports.com?subject=')).toBeTrue();
     expect(decodeURIComponent(url)).toContain('[Website] Support from Sam');
     expect(decodeURIComponent(url)).toContain('Phone: -');
     expect(decodeURIComponent(url)).toContain('Hi there');
