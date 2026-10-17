@@ -191,7 +191,7 @@ export const SITE: SiteContent = {
       'Our main location is the home base of Volt Sports Hub: a place where academies, ' +
       'coaches, physiotherapists and players meet. Courts, pitches, training halls and a ' +
       'recovery room sit under one roof, so booking an activity in the app turns into walking ' +
-      'through the door and scanning your QR code. [PLACEHOLDER — replace with the real description of the place]',
+      'through the door and scanning your QR code.',
   },
 
   about: {
