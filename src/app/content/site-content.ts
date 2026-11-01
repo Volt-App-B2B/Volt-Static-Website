@@ -17,6 +17,8 @@ export interface Brand {
   tagline: string;
   email: string;
   phone: string;
+  /** Registered trademark number. */
+  trademarkNo: string;
   social: SocialLinks;
   /** Public origin used for canonical, Open Graph and sitemap URLs. */
   siteUrl: string;
@@ -131,6 +133,7 @@ export const SITE: SiteContent = {
     tagline: 'One app for every academy, court, coach and class.',
     email: 'S.nafie@volt-sports.com', // [PLACEHOLDER]
     phone: '01000332861', // [PLACEHOLDER]
+    trademarkNo: '641817',
     social: {
       // [PLACEHOLDER] links
       instagram: 'https://www.instagram.com/voltsportshub/',
