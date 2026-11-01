@@ -8,7 +8,12 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
   template: `
     <div class="track">
       @for (w of doubled(); track $index) {
-        <span>{{ w }}</span>
+        <span>
+          <b>{{ w }}</b>
+          @if (isSoon(w)) {
+            <em class="soon">Coming soon</em>
+          }
+        </span>
       }
     </div>
   `,
@@ -42,6 +47,19 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
       align-items: center;
       gap: 52px;
     }
+    b {
+      font: inherit;
+    }
+    .soon {
+      font: 800 11px/1 var(--display);
+      font-style: normal;
+      letter-spacing: 0.08em;
+      margin-left: 12px;
+      padding: 5px 9px;
+      border: 2px solid var(--g);
+      border-radius: 999px;
+      vertical-align: middle;
+    }
     span::after {
       content: '';
       width: 14px;
@@ -58,5 +76,11 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 })
 export class Marquee {
   readonly items = input.required<string[]>();
+  /** When set, items not in this list get a "Coming soon" tag. */
+  readonly available = input<string[] | null>(null);
+  protected isSoon(item: string): boolean {
+    const a = this.available();
+    return a !== null && !a.includes(item);
+  }
   protected readonly doubled = computed(() => [...this.items(), ...this.items()]);
 }
