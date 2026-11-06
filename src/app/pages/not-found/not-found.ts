@@ -1,12 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { SiteContentService } from '../../core/site-content.service';
 import { BoltMark } from '../../shared/logo/bolt-mark';
 import { Button } from '../../shared/ui/button/button';
 
 /** Branded 404. The route sets noindex via route data (see app.routes.ts). */
 @Component({
   selector: 'app-not-found',
-  imports: [RouterLink, Button, BoltMark],
+  imports: [Button, BoltMark],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'page' },
   template: `
@@ -17,8 +17,8 @@ import { Button } from '../../shared/ui/button/button';
         <h1 class="disp">Out of <span class="lime">bounds</span>.</h1>
         <p class="sub">This page does not exist or has moved. Head back to the pitch and keep playing.</p>
         <div class="cta">
-          <a app-button routerLink="/">Back to home</a>
-          <a app-button variant="ghost" routerLink="/contact">Contact us</a>
+          <a app-button [href]="androidUrl" target="_blank" rel="noopener">Get the app – Android</a>
+          <a app-button variant="ghost" [href]="iosUrl" target="_blank" rel="noopener">Get the app – iOS</a>
         </div>
       </div>
     </section>
@@ -63,4 +63,8 @@ import { Button } from '../../shared/ui/button/button';
     }
   `,
 })
-export class NotFound {}
+export class NotFound {
+  private readonly apps = inject(SiteContentService).site.brand.apps;
+  protected readonly androidUrl = this.apps.android;
+  protected readonly iosUrl = this.apps.ios;
+}

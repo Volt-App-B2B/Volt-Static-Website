@@ -20,6 +20,7 @@ export interface Brand {
   /** Registered trademark number. */
   trademarkNo: string;
   social: SocialLinks;
+  apps: { android: string; ios: string };
   /** Public origin used for canonical, Open Graph and sitemap URLs. */
   siteUrl: string;
 }
@@ -138,6 +139,11 @@ export const SITE: SiteContent = {
       // [PLACEHOLDER] links
       instagram: 'https://www.instagram.com/voltsportshub/',
       facebook: 'https://www.facebook.com/profile.php?id=61583010271806',
+    },
+    apps: {
+      // [PLACEHOLDER] real store listings
+      android: 'https://play.google.com/store/apps/details?id=REPLACE_ME',
+      ios: 'https://apps.apple.com/app/idREPLACE_ME',
     },
     siteUrl: 'https://www.volt-sportshub.com', // [PLACEHOLDER] real production domain
   },
