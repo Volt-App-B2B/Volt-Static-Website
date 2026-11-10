@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.voltsports.app",
+      "sha256_cert_fingerprints": [
+        "FB:35:60:10:A9:0D:F3:F3:7F:64:27:50:BF:50:58:B4:1D:57:5C:A2:BA:3D:CB:92:17:D1:C3:D0:4C:BD:2B:30"
+      ]
+    }
+  }
+]
