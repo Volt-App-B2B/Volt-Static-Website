@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["6A85C43399.com.voltsports.volt"],
+        "components": [
+          { "/": "/join/*" },
+          { "/": "/family-groups/join" }
+        ]
+      }
+    ]
+  }
+}
